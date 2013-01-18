@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="GB2312" ?>
+<configure>
+
+  <gateway_server>
+    <node1 ip="10.10.10.99" port="8081" thread_number="4" log="/home/than/squirrel/trunk/generate/work/"
+	    core_configure="/home/than/squirrel/trunk/generate/configure/core.xml"
+      core_log="/home/than/squirrel/trunk/generate/work/core_">
+      <default_schedule id="1" ip="10.10.10.99" port="21001"/>
+    </node1>
+    <node2 ip="10.10.10.99" port="8082" thread_number="4" log="/home/than/squirrel/trunk/generate/work/"
+	    core_configure="/home/than/squirrel/trunk/generate/configure/core.xml"
+      core_log="/home/than/squirrel/trunk/generate/work/core_">
+      <default_schedule id="1" ip="10.10.10.99" port="21001"/>
+    </node2>
+    <node3 ip="10.10.10.99" port="8083" thread_number="4" log="/home/than/squirrel/trunk/generate/work/" 
+	    core_configure="/home/than/squirrel/trunk/generate/configure/core.xml"
+      core_log="/home/than/squirrel/trunk/generate/work/core_">
+      <default_schedule id="2" ip="10.10.10.99" port="21002"/>
+    </node3>
+    <node4 ip="10.10.10.99" port="8084" thread_number="4" log="/home/than/squirrel/trunk/generate/work/"
+	    core_configure="/home/than/squirrel/trunk/generate/configure/core.xml"
+      core_log="/home/than/squirrel/trunk/generate/work/core_">
+      <default_schedule id="3" ip="10.10.10.99" port="21003"/>
+    </node4>
+  </gateway_server>
+
+  <dataproxy_client>
+    <node id="1" ip="10.10.10.99" port="31001"/>
+    <node id="2" ip="10.10.10.99" port="31002"/>
+  </dataproxy_client>
+
+  <dataproxy_server>
+    <node1>
+	    <host ip="10.10.10.99" port="31001"/>
+      <thread_number message="2" read="4" write="4"/>
+	    <log value="/home/than/squirrel/trunk/generate/work/"/>
+	    <core_configure value="/home/than/squirrel/trunk/generate/configure/core.xml"/>
+      <core_log value="/home/than/squirrel/trunk/generate/work/core_"/>
+	    <default_schedule id="1" ip="10.10.10.99" port="21001"/>
+      <request_service max_buffer_size="102400"/>
+      <redis>
+        <node ip="10.10.10.99" port="6379"/>
+        <node ip="10.10.10.99" port="6380"/>
+      </redis>
+      <storage>
+        <node ip="10.10.12.6" port="3306" user="root" passwd="1qaz@WSX" db="squirrel001"/>
+        <node ip="10.10.12.6" port="3306" user="root" passwd="1qaz@WSX" db="squirrel002"/>
+      </storage>
+      <procedure>
+        <node type="0" name="PROCEDURE_KEYVEALUE_SET"/>
+        <node type="1" name="PROCEDURE_KEYVEALUE_GET"/>
+        <node type="2" name="PROCEDURE_KEYVEALUE_DELETE"/>
+        <node type="3" name="PROCEDURE_NUMBER_INCREASE"/>
+        <node type="4" name="PROCEDURE_NUMBER_DECREASE"/>
+        <node type="5" name="PROCEDURE_NUMBER_RESET"/>
+        <node type="6" name="PROCEDURE_NUMBER_DELETE"/>
+        <node type="7" name="PROCEDURE_LIST_PUSH"/>
+        <node type="8" name="PROCEDURE_LIST_POP"/>
+        <node type="9" name="PROCEDURE_LIST_REMOVE"/>
+        <node type="10" name="PROCEDURE_LIST_CLEAR"/>
+        <node type="11" name="PROCEDURE_LIST_DELETE"/>
+        <node type="12" name="PROCEDURE_MAP_INSERT"/>
+        <node type="13" name="PROCEDURE_MAP_REMOVE"/>
+        <node type="14" name="PROCEDURE_MAP_QUERY_RANKING"/>
+        <node type="15" name="PROCEDURE_MAP_QUERY_RANKING_RANGE"/>
+        <node type="16" name="PROCEDURE_MAP_CLEAR"/>
+        <node type="17" name="PROCEDURE_MAP_DELETE"/>
+      </procedure>
+    </node1>
+    <node2>
+	    <host ip="10.10.10.99" port="31002"/>
+      <thread_number message="2" read="4" write="4"/>
+	    <log value="/home/than/squirrel/trunk/generate/work/"/>
+	    <core_configure value="/home/than/squirrel/trunk/generate/configure/core.xml"/>
+      <core_log value="/home/than/squirrel/trunk/generate/work/core_"/>
+	    <default_schedule id="2" ip="10.10.10.99" port="21002"/>
+      <request_service max_buffer_size="102400"/>
+      <redis>
+        <node ip="10.10.10.99" port="6381"/>
+        <node ip="10.10.10.99" port="6382"/>
+      </redis>
+      <storage>
+        <node ip="10.10.12.6" port="3306" user="root" passwd="1qaz@WSX" db="squirrel003"/>
+        <node ip="10.10.12.6" port="3306" user="root" passwd="1qaz@WSX" db="squirrel004"/>
+      </storage>
+      <procedure>
+        <node type="0" name="PROCEDURE_KEYVEALUE_SET"/>
+        <node type="1" name="PROCEDURE_KEYVEALUE_GET"/>
+        <node type="2" name="PROCEDURE_KEYVEALUE_DELETE"/>
+        <node type="3" name="PROCEDURE_NUMBER_INCREASE"/>
+        <node type="4" name="PROCEDURE_NUMBER_DECREASE"/>
+        <node type="5" name="PROCEDURE_NUMBER_RESET"/>
+        <node type="6" name="PROCEDURE_NUMBER_DELETE"/>
+        <node type="7" name="PROCEDURE_LIST_PUSH"/>
+        <node type="8" name="PROCEDURE_LIST_POP"/>
+        <node type="9" name="PROCEDURE_LIST_REMOVE"/>
+        <node type="10" name="PROCEDURE_LIST_CLEAR"/>
+        <node type="11" name="PROCEDURE_LIST_DELETE"/>
+        <node type="12" name="PROCEDURE_MAP_INSERT"/>
+        <node type="13" name="PROCEDURE_MAP_REMOVE"/>
+        <node type="14" name="PROCEDURE_MAP_QUERY_RANKING"/>
+        <node type="15" name="PROCEDURE_MAP_QUERY_RANKING_RANGE"/>
+        <node type="16" name="PROCEDURE_MAP_CLEAR"/>
+        <node type="17" name="PROCEDURE_MAP_DELETE"/>
+      </procedure>
+    </node2>
+  </dataproxy_server>
+  
+  <schedule_server>
+    <node1>
+	    <host ip="10.10.10.99" port="21001"/>
+	    <log value="/home/than/squirrel/trunk/generate/work/"/>
+	    <core_configure value="/home/than/squirrel/trunk/generate/configure/core.xml"/>
+      <core_log value="/home/than/squirrel/trunk/generate/work/core_"/>
+	    <default_client_login id="2" ip="10.10.10.99" port="21002"/>
+	  </node1>
+  	<node2>
+  	  <host ip="10.10.10.99" port="21002"/>
+  	  <log value="/home/than/squirrel/trunk/generate/work/"/>
+  	  <core_configure value="/home/than/squirrel/trunk/generate/configure/core.xml"/>
+      <core_log value="/home/than/squirrel/trunk/generate/work/core_"/>
+  	  <default_client_login id="1" ip="10.10.10.99" port="21001"/>
+  	</node2>
+  	<node3>
+  	  <host ip="10.10.10.99" port="21003"/>
+  	  <log value="/home/than/squirrel/trunk/generate/work/"/>
+  	  <core_configure value="/home/than/squirrel/trunk/generate/configure/core.xml"/>
+      <core_log value="/home/than/squirrel/trunk/generate/work/core_"/>
+  	  <default_client_login id="1" ip="10.10.10.99" port="21001"/>
+  	</node3>
+  </schedule_server>
+  
+</configure>
+
